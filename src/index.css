@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* 运动暗色风：深蓝黑底 + 活力橙/青色点缀 */
+    --background: 222 47% 7%;         /* #0B1220 深海蓝黑 */
+    --foreground: 210 40% 96%;
+    --card: 220 45% 10%;              /* #111B2E */
+    --card-foreground: 210 40% 96%;
+    --popover: 220 45% 10%;
+    --popover-foreground: 210 40% 96%;
+    --primary: 24 100% 60%;           /* #FF6B35 活力橙 */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 220 40% 16%;
+    --secondary-foreground: 210 40% 96%;
+    --muted: 220 40% 14%;
+    --muted-foreground: 217 20% 60%;
+    --accent: 190 90% 50%;            /* #22D3EE 电光青 */
+    --accent-foreground: 222 47% 7%;
+    --destructive: 4 90% 58%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 220 35% 18%;
+    --input: 220 35% 20%;
+    --ring: 24 100% 60%;
+    --radius: 0.75rem;
+    --sidebar-background: 222 50% 5%;
+    --sidebar-foreground: 210 40% 90%;
+    --sidebar-primary: 24 100% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 40% 14%;
+    --sidebar-accent-foreground: 210 40% 96%;
+    --sidebar-border: 220 35% 14%;
+    --sidebar-ring: 24 100% 60%;
+  }
+
+  * {
+    border-color: hsl(var(--border));
+  }
+
+  html {
+    font-family: 'Noto Sans SC', -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-size: 14px;
+    line-height: 1.6;
+    background-image:
+      radial-gradient(ellipse 80% 50% at 20% -10%, rgba(255, 107, 53, 0.08), transparent),
+      radial-gradient(ellipse 60% 40% at 90% 0%, rgba(34, 211, 238, 0.06), transparent);
+    background-attachment: fixed;
+  }
+
+  .tnum, table, [data-tnum] {
+    font-feature-settings: "tnum";
+  }
+
+  ::selection {
+    background: rgba(255, 107, 53, 0.3);
+  }
+
+  ::-webkit-scrollbar { width: 8px; height: 8px; }
+  ::-webkit-scrollbar-thumb { background: #1E2B45; border-radius: 8px; }
+  ::-webkit-scrollbar-thumb:hover { background: #2E3D5C; }
+  ::-webkit-scrollbar-track { background: transparent; }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer utilities {
+  .shimmer {
+    background: linear-gradient(90deg, #16223A 25%, #1C2B47 50%, #16223A 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.4s infinite;
+  }
+  .pb-safe { padding-bottom: env(safe-area-inset-bottom, 0px); }
+  .pt-safe { padding-top: env(safe-area-inset-top, 0px); }
+  .font-brand { font-family: 'Space Grotesk', 'Noto Sans SC', sans-serif; letter-spacing: 0.02em; }
+  .font-mono2 { font-family: 'JetBrains Mono', monospace; }
+  /* 运动斜切角 */
+  .clip-angle { clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px)); }
+  .clip-angle-sm { clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px)); }
+  /* 呼吸光晕 */
+  .glow-orange { box-shadow: 0 0 24px rgba(255, 107, 53, 0.25); }
+  .glow-cyan { box-shadow: 0 0 24px rgba(34, 211, 238, 0.2); }
+  /* 数字大标题 */
+  .stat-num { font-family: 'Space Grotesk', 'JetBrains Mono', monospace; font-weight: 700; letter-spacing: -0.02em; }
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
